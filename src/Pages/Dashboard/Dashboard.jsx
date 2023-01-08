@@ -38,18 +38,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(
-        "https://bill-splitter-backend.vercel.app/api/v1/dashboard",
-        {
-          method: "GET",
-          mode: "cors",
-          cache: "no-cache",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/v1/dashboard", {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const result = await response.json();
 

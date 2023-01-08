@@ -78,21 +78,18 @@ const Auth = () => {
         confirmPass &&
         gender
       ) {
-        const response = await fetch(
-          "https://bill-splitter-backend.vercel.app/api/v1/signup",
-          {
-            method: "POST",
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              ...data,
-            }),
-          }
-        );
+        const response = await fetch("http://localhost:5000/api/v1/signup", {
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+          }),
+        });
 
         const result = await response.json();
         if (result.success) {
@@ -109,21 +106,18 @@ const Auth = () => {
       // console.log(data);
 
       if (email && upassword) {
-        const response = await fetch(
-          "https://bill-splitter-backend.vercel.app/api/v1/login",
-          {
-            method: "POST",
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              ...data,
-            }),
-          }
-        );
+        const response = await fetch("http://localhost:5000/api/v1/login", {
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+          }),
+        });
 
         const result = await response.json();
 

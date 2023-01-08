@@ -43,7 +43,7 @@ const GroupExpand = ({ groupData, profileData, isExtendedSidebar }) => {
 
   const changeGroupName = async () => {
     const response = await fetch(
-      `https://bill-splitter-backend.vercel.app/api/v1/changegroupname/${gid}`,
+      `http://localhost:5000/api/v1/changegroupname/${gid}`,
       {
         method: "POST",
         credentials: "include",
@@ -67,7 +67,7 @@ const GroupExpand = ({ groupData, profileData, isExtendedSidebar }) => {
     setIsLoading(true);
     const apicall = async () => {
       const response = await fetch(
-        `https://bill-splitter-backend.vercel.app/api/v1/dashboard/${gid}`,
+        `http://localhost:5000/api/v1/dashboard/${gid}`,
         {
           credentials: "include",
           headers: {
