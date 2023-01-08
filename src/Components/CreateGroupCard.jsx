@@ -7,22 +7,19 @@ const CreateGroupCard = ({ setOpenCreateGroup, setGroupData }) => {
   const [disabled, setDisabled] = useState(true);
 
   const submitHandler = async () => {
-    const response = await fetch(
-      "https://bill-splitter-backend.vercel.app/api/v1/creategroup",
-      {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    const response = await fetch("http://localhost:5000/api/v1/creategroup", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        body: JSON.stringify({
-          gname: data,
-        }),
-      }
-    );
+      body: JSON.stringify({
+        gname: data,
+      }),
+    });
 
     const result = await response.json();
 

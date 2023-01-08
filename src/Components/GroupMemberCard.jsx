@@ -17,7 +17,7 @@ const GroupMemberCard = ({
   const submitHandler = async () => {
     document.querySelector(".addmember-btn").innerHTML = "ADDING ...";
     const response = await fetch(
-      `https://bill-splitter-backend.vercel.app/api/v1/addmember/${gid}`,
+      `http://localhost:5000/api/v1/addmember/${gid}`,
       {
         method: "POST",
         mode: "cors",
