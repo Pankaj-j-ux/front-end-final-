@@ -27,6 +27,37 @@ const Dashboard = () => {
   const [isOpen, setOpen] = useState(false);
   const [isOverProfile, setOverProfile] = useState(false);
   const [isOverList, setOverList] = useState(false);
+  const [isTrigged, setIsTrigged] = useState(false);
+  const [isSlider, setIsSlider] = useState(false);
+
+  function setSliderHandler(val) {
+    setIsSlider(val);
+  }
+
+  function getWindowSize() {
+    const { innerWidth } = window;
+    return innerWidth;
+  }
+
+  useEffect(() => {
+    function handleWindowResize() {
+      if (getWindowSize() <= 610) {
+        // console.log("bellow");
+        setIsTrigged(true);
+      } else {
+        // console.log("above");
+
+        setIsTrigged(false);
+      }
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+    window.addEventListener("load", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (isOverList || isOverProfile) {
@@ -104,22 +135,30 @@ const Dashboard = () => {
           </div>
         )} */}
         <Header
+          isTrigged={isTrigged}
           profileData={profileData}
           setIsExtendedSidebar={setIsExtendedSidebar}
           setOverProfile={setOverProfile}
         />
-        <div className="dashboard-body">
-          <Sidebar
-            profileData={profileData}
-            isExtendedSidebar={isExtendedSidebar}
-            setOpenCreateGroup={setOpenCreateGroup}
-            groupData={groupData}
-          />
-          <GroupExpand
-            isExtendedSidebar={isExtendedSidebar}
-            profileData={profileData}
-            groupData={groupData}
-          />
+        <div className="slider">
+          <div className="dashboard-body">
+            <Sidebar
+              isTrigged={isTrigged}
+              profileData={profileData}
+              isExtendedSidebar={isExtendedSidebar}
+              setOpenCreateGroup={setOpenCreateGroup}
+              groupData={groupData}
+              setSliderHandler={setSliderHandler}
+              isSlider={isSlider}
+            />
+            <GroupExpand
+              isTrigged={isTrigged}
+              isExtendedSidebar={isExtendedSidebar}
+              profileData={profileData}
+              groupData={groupData}
+              setSliderHandler={setSliderHandler}
+            />
+          </div>
         </div>
       </div>
     </>

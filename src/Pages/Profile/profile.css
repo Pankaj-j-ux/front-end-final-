@@ -135,3 +135,13 @@
 .mainprofile_inner > .detail > div:nth-child(2) > button {
   border-radius: 2px;
 }
+
+@media (max-width: 900px) {
+  .mainprofile_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 20px;
+    overflow: scroll;
+  }
+}

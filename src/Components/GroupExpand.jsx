@@ -12,6 +12,7 @@ import {
   faLayerGroup,
   faEdit,
   faArrowUpRightFromSquare,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import AddExpenceCard from "./AddExpenceCard";
 import ExpenseCard from "./ExpenseCard";
@@ -21,7 +22,13 @@ import LentCard from "./LentCard";
 import DeleteGroupCard from "./DeleteGroupCard";
 import Loader from "./Loader";
 
-const GroupExpand = ({ groupData, profileData, isExtendedSidebar }) => {
+const GroupExpand = ({
+  groupData,
+  profileData,
+  isExtendedSidebar,
+  isTrigged,
+  setSliderHandler,
+}) => {
   // const [data, setData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -146,7 +153,9 @@ const GroupExpand = ({ groupData, profileData, isExtendedSidebar }) => {
     <>
       <div
         className="groupexpand"
-        style={{ marginLeft: isExtendedSidebar ? "280px" : "80px" }}
+        style={{
+          marginLeft: isTrigged ? "0px" : isExtendedSidebar ? "280px" : "80px",
+        }}
       >
         {gid ? (
           isLoading ? (
@@ -185,6 +194,16 @@ const GroupExpand = ({ groupData, profileData, isExtendedSidebar }) => {
               <div className="groupexpand_inner">
                 <div className="groupheader">
                   <div className="title">
+                    {isTrigged && (
+                      <FontAwesomeIcon
+                        style={{ cursor: "pointer", marginRight: "20px" }}
+                        icon={faArrowLeft}
+                        onClick={() => {
+                          setSliderHandler(false);
+                        }}
+                      />
+                    )}
+
                     <FontAwesomeIcon
                       style={{ cursor: "pointer" }}
                       icon={faEdit}

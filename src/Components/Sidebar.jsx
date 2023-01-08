@@ -7,16 +7,17 @@ const Sidebar = ({
   setOpenCreateGroup,
   isExtendedSidebar,
   profileData,
+  isTrigged,
+  setSliderHandler,
+  isSlider,
 }) => {
   return (
     <>
       <div
         className="sidebar"
         style={{
-          width: isExtendedSidebar ? "280px" : "80px",
-          // height: !(profileData.photo1 && profileData.contact)
-          //   ? "86.5vh"
-          //   : "90.1vh",
+          width: isTrigged ? "50%" : isExtendedSidebar ? "280px" : "80px",
+          marginLeft: isTrigged ? (isSlider ? "-50%" : "0%") : "0%",
         }}
       >
         <div className="deign1">
@@ -37,6 +38,7 @@ const Sidebar = ({
                 gname={obj.gname}
                 createdat={obj.Created_at}
                 isExtendedSidebar={isExtendedSidebar}
+                setSliderHandler={setSliderHandler}
               />
             );
           })}

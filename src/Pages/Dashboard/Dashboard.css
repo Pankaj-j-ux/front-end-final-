@@ -1129,7 +1129,46 @@
   }
 }
 
+@media (max-width: 890px) {
+  .mix-flex {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    /* grid-template-columns: 45% 55%; */
+    /* grid-template-rows: 200px 200px 400px 140px; */
+  }
+}
+
 @media (max-width: 610px) {
+  .profile > span {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .logo > a {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .groupexpand {
+    width: 50%;
+  }
+
+  .slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    transition: margin-left 0.3s ease-in-out;
+  }
+
+  .dashboard-body {
+    display: flex;
+    /* flex-direction: column; */
+    width: 200%;
+  }
+
   .addexpencecard > .innerbody {
     width: 80%;
   }

@@ -10,19 +10,26 @@ import { Link } from "react-router-dom";
 // import { useState } from "react";
 // import { useEffect } from "react";
 
-const Header = ({ setIsExtendedSidebar, setOverProfile, profileData }) => {
+const Header = ({
+  setIsExtendedSidebar,
+  setOverProfile,
+  profileData,
+  isTrigged,
+}) => {
   return (
     <>
       <div className="header">
         <div className="logo">
-          <FontAwesomeIcon
-            icon={faBars}
-            onClick={() =>
-              setIsExtendedSidebar((pre) => {
-                return !pre;
-              })
-            }
-          />
+          {!isTrigged && (
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={() =>
+                setIsExtendedSidebar((pre) => {
+                  return !pre;
+                })
+              }
+            />
+          )}
           <Link to="/">BILL SPLITTER</Link>
         </div>
         <div className="setting">

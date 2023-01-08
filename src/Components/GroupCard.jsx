@@ -13,13 +13,19 @@ function generateRandomColor() {
 
 const color = generateRandomColor();
 
-const GroupCard = ({ gid, gname, createdat, isExtendedSidebar }) => {
+const GroupCard = ({
+  gid,
+  gname,
+  createdat,
+  isExtendedSidebar,
+  setSliderHandler,
+}) => {
   const letter = gname.charAt(0).toUpperCase();
   createdat = new Date(createdat).toDateString();
 
   return (
     <NavLink to={`dashboard/${gid}`}>
-      <div className="groupcard">
+      <div className="groupcard" onClick={() => setSliderHandler(true)}>
         <div
           className="card-img"
           style={{ backgroundColor: "rgba(18, 84, 160, 0.3)" }}
